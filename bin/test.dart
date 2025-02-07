@@ -30,3 +30,11 @@ cascade	..    ?..	Left
 assignment	=    *=    /=   +=   -=   &=   ^=   etc.	Right
 spread (See note)	...    ...?	None
  */
+// single comment
+/*
+multiline comment
+ */
+/// document comment
+/**
+ document comment
+ **/
