@@ -9,8 +9,22 @@ void main(){
   int lineCount;
   //var _ = 1;
   int _ = 2;
+  // record
+  var record = ('first', a: 2, b: true, 'last');
+  print(record);
+  ({int a, int b}) recordAB = (a: 1, b: 2);
+  ({int a, int b}) recordGH=(a:1,b:5);
+  ({int x, int y}) recordXY = (x: 3, y: 4);
 
+// Compile error! These records don't have the same type.
+ //recordAB = recordXY;
+  print(recordAB==recordGH);
 }
+// record swap
+//(int, int) swap((int, int) record) {
+//   var (a, b) = record;
+//   return (b, a);
+// }
 
 /*
 unary postfix	expr++    expr--    ()    []    ?[]    .    ?.    !	None
