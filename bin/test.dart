@@ -19,6 +19,11 @@ void main(){
 // Compile error! These records don't have the same type.
  //recordAB = recordXY;
   print(recordAB==recordGH);
+  // generics types
+  var names = [];
+  names.addAll(['Seth', 'Kathy', 'Lars']);
+  names.add(42); //
+  print(names);
 }
 // record swap
 //(int, int) swap((int, int) record) {
