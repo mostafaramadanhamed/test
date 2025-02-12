@@ -24,6 +24,22 @@ void main(){
   names.addAll(['Seth', 'Kathy', 'Lars']);
   names.add(42); //
   print(names);
+  // type system
+  //✗ static analysis: failure
+  // void printInts(List<int> a) => print(a);
+  //
+  // void main() {
+  //   final list = [];
+  //   list.add(1);
+  //   list.add('2');
+  //   printInts(list);
+  // }
+  void printInts(List<int> a) => print(a);
+    final list = <int>[];
+    list.add(1);
+    list.add(2);
+    printInts(list);
+
 }
 // record swap
 //(int, int) swap((int, int) record) {
