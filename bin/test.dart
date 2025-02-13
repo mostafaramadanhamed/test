@@ -1,20 +1,20 @@
 void main(){
   print('play');
   // non nullable
-  int i;
+ // int i;
   // nullable variable
-  int ? t;
+  //int ? t;
   // variable with initial value
-  int e=0;
-  int lineCount;
+  //int e=0;
+  //int lineCount;
   //var _ = 1;
-  int _ = 2;
+  //int _ = 2;
   // record
   var record = ('first', a: 2, b: true, 'last');
   print(record);
   ({int a, int b}) recordAB = (a: 1, b: 2);
   ({int a, int b}) recordGH=(a:1,b:5);
-  ({int x, int y}) recordXY = (x: 3, y: 4);
+//  ({int x, int y}) recordXY = (x: 3, y: 4);
 
 // Compile error! These records don't have the same type.
  //recordAB = recordXY;
@@ -34,6 +34,7 @@ void main(){
   //   list.add('2');
   //   printInts(list);
   // }
+  // ✔ static analysis: success
   void printInts(List<int> a) => print(a);
     final list = <int>[];
     list.add(1);
@@ -41,6 +42,22 @@ void main(){
     printInts(list);
 
 }
+// pattern
+   // matching
+      // switch (number) {
+     //   // Constant pattern matches if 1 == number.
+    //   case 1:
+   //     print('one');
+  // }
+  // Destructuring
+  /*
+  var numList = [1, 2, 3];
+// List pattern [a, b, c] destructures the three elements from numList...
+var [a, b, c] = numList;
+// ...and assigns them to new variables.
+print(a + b + c);
+   */
+
 // record swap
 //(int, int) swap((int, int) record) {
 //   var (a, b) = record;
