@@ -1,3 +1,20 @@
+
+// pattern
+// matching
+// switch (number) {
+//   // Constant pattern matches if 1 == number.
+//   case 1:
+//     print('one');
+// }
+// Destructuring
+/*
+  var numList = [1, 2, 3];
+// List pattern [a, b, c] destructures the three elements from numList...
+var [a, b, c] = numList;
+// ...and assigns them to new variables.
+print(a + b + c);
+   */
+
 // from low to high
 // logical or
 // var isPrimary = switch (color) {

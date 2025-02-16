@@ -42,21 +42,22 @@ void main(){
     printInts(list);
 
 }
-// pattern
-   // matching
-      // switch (number) {
-     //   // Constant pattern matches if 1 == number.
-    //   case 1:
-   //     print('one');
-  // }
-  // Destructuring
-  /*
-  var numList = [1, 2, 3];
-// List pattern [a, b, c] destructures the three elements from numList...
-var [a, b, c] = numList;
-// ...and assigns them to new variables.
-print(a + b + c);
-   */
+// tear off ✅✅
+// Function tear-off
+// charCodes.forEach(print);
+//
+// // Method tear-off
+// charCodes.forEach(buffer.write);
+// lambdas ❌❌
+// // Function lambda
+// charCodes.forEach((code) {
+//   print(code);
+// });
+//
+// // Method lambda
+// charCodes.forEach((code) {
+//   buffer.write(code);
+// });
 
 // record swap
 //(int, int) swap((int, int) record) {
