@@ -1,3 +1,41 @@
+// control flow
+// loops
+// for
+//var message = StringBuffer('Dart is fun');
+// for (var i = 0; i < 5; i++) {
+//   message.write('!');
+// }
+// for in
+// for (final Candidate(:name, :yearsExperience) in candidates) {
+// print('$name has $yearsExperience of experience.');
+// }
+// while
+//A while loop evaluates the condition before the loop:
+//
+// while (!isDone()) {
+//   doSomething();
+// }
+// do while
+//do {
+//   printLine();
+// } while (!atEndOfPage());
+// break and continue
+//Use break to stop looping:
+//
+// while (true) {
+//   if (shutDownRequested()) break;
+//   processIncomingRequests();
+// }
+// content_copy
+// Use continue to skip to the next loop iteration:
+//
+// for (int i = 0; i < candidates.length; i++) {
+//   var candidate = candidates[i];
+//   if (candidate.yearsExperience < 5) {
+//     continue;
+//   }
+//   candidate.interview();
+// }
 // branches
 // if
 // if (isRaining()) {
