@@ -29,3 +29,25 @@
 //   case 'PENDING':
 //     executeNowClosed(); // Runs for both OPEN and PENDING.
 // }
+// Guard clause
+// #
+// To set an optional guard clause after a case clause, use the keyword when. A guard clause can follow if case, and both switch statements and expressions.
+//
+// // Switch statement:
+// switch (something) {
+//   case somePattern when some || boolean || expression:
+//     //             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
+//     body;
+// }
+//
+// // Switch expression:
+// var value = switch (something) {
+//   somePattern when some || boolean || expression => body,
+//   //               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
+// }
+//
+// // If-case statement:
+// if (something case somePattern when some || boolean || expression) {
+//   //                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
+//   body;
+// }
