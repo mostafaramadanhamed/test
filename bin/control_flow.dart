@@ -1,4 +1,4 @@
-// control flow
+/// control flow
 // loops
 // for
 //var message = StringBuffer('Dart is fun');
@@ -89,3 +89,73 @@
 //   //                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Guard clause.
 //   body;
 // }
+// error handling
+// Throw
+// #
+// Here's an example of throwing, or raising, an exception:
+//
+// throw FormatException('Expected at least 1 section');
+// content_copy
+// You can also throw arbitrary objects:
+//
+// throw 'Out of llamas!';
+//Catch
+// #
+// Catching, or capturing, an exception stops the exception from propagating (unless you rethrow the exception). Catching an exception gives you a chance to handle it:
+//
+// try {
+//   breedMoreLlamas();
+// } on OutOfLlamasException {
+//   buyMoreLlamas();
+// }
+// content_copy
+// To handle code that can throw more than one type of exception, you can specify multiple catch clauses. The first catch clause that matches the thrown object's type handles the exception. If the catch clause does not specify a type, that clause can handle any type of thrown object:
+//
+// try {
+//   breedMoreLlamas();
+// } on OutOfLlamasException {
+//   // A specific exception
+//   buyMoreLlamas();
+// } on Exception catch (e) {
+//   // Anything else that is an exception
+//   print('Unknown exception: $e');
+// } catch (e) {
+//   // No specified type, handles all
+//   print('Something really unknown: $e');
+// }
+//Finally
+// #
+// To ensure that some code runs whether or not an exception is thrown, use a finally clause. If no catch clause matches the exception, the exception is propagated after the finally clause runs:
+//
+// try {
+//   breedMoreLlamas();
+// } finally {
+//   // Always clean up, even if an exception is thrown.
+//   cleanLlamaStalls();
+// }
+// content_copy
+// The finally clause runs after any matching catch clauses:
+//
+// try {
+//   breedMoreLlamas();
+// } catch (e) {
+//   print('Error: $e'); // Handle the exception first.
+// } finally {
+//   cleanLlamaStalls(); // Then clean up.
+// }
+//During development, use an assert statement— assert(<condition>, <optionalMessage>); —to disrupt normal execution if a boolean condition is false.
+//
+// // Make sure the variable has a non-null value.
+// assert(text != null);
+//
+// // Make sure the value is less than 100.
+// assert(number < 100);
+//
+// // Make sure this is an https URL.
+// assert(urlString.startsWith('https'));
+//To attach a message to an assertion, add a string as the second argument to assert (optionally with a trailing comma):
+//
+// assert(
+//   urlString.startsWith('https'),
+//   'URL ($urlString) should start with "https".',
+// );
