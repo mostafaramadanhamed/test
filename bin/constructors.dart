@@ -32,6 +32,8 @@ Point(this.x, this.y);
 
   Point.tre():x=0,y =9;
 
+  // Delegates to the main constructor.
+  Point.alongXAxis(double x) : this(x, 0);
 }
 //
 // Constant constructors
