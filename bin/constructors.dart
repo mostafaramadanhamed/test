@@ -14,7 +14,11 @@
 // Generative constructors
 
 //To instantiate a class, use a generative constructor.
-
+const double xOrigin = 0;
+const double yOrigin = 0;
+// Named constructors
+// #
+// Use a named constructor to implement multiple constructors for a class or to provide extra clarity:
 class Point {
 // Instance variables to hold the coordinates of the point.
 double x;
@@ -23,4 +27,22 @@ double y;
 // Generative constructor with initializing formal parameters:
 Point(this.x, this.y);
 
+  // Named constructor
+  Point.origin() : x = xOrigin, y = yOrigin;
+
+  Point.tre():x=0,y =9;
+
+}
+//
+// Constant constructors
+// #
+// If your class produces unchanging objects, make these objects compile-time constants.
+// To make objects compile-time constants, define a const constructor with all instance variables set as final.
+
+class ImmutablePoint {
+static const ImmutablePoint origin = ImmutablePoint(0, 0);
+
+final double x, y;
+
+const ImmutablePoint(this.x, this.y);
 }
