@@ -52,6 +52,12 @@ class Virtuoso with Musician {
 
 
 }
-
+//The on clause forces any class that uses a mixin to also be a subclass of the type in the on clause.
+mixin MusicalPerformer on Musician {
+  performerMethod() {
+    print('Performing music!');
+    super.playDum();
+  }
+}
 
 //
