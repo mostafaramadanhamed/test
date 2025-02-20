@@ -15,12 +15,19 @@ mixin Musical {
   }
 }
 class Performer{}
+//class, mixin, or mixin class?
+//A mixin declaration defines a mixin.
+// A class declaration defines a class.
+// A mixin class declaration defines a class that is usable as both a regular class and a mixin, with the same name and the same type
 
 class Person{
   late String name;
 }
 mixin class Aggressive{}
 mixin Demented{}
+// mixin class Aggressive used as class
+class Piano extends Aggressive{}
+// mixin class Aggressive used as mixin
 class Maestro extends Person with Musical, Aggressive, Demented {
   Maestro(String maestroName) {
      name = maestroName;
@@ -60,4 +67,3 @@ mixin MusicalPerformer on Musician {
   }
 }
 
-//
