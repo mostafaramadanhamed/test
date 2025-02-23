@@ -58,6 +58,31 @@ base class BB extends B {
 // @final
 
 // @ interface
+//? interface modifier. Libraries outside of the interface's own defining library can implement the interface, but not extend it
+interface class C {
+  void moveForward(int meters) {
+    // ...
+  }
+}
+// Can be constructed.
+C myc = C();
+
+//! ERROR: Can't be inherited.
+class CC extends C {
+  int passengers = 4;
+// ...
+}
+
+// Can be implemented.
+class MoC implements C {
+  @override
+  void moveForward(int meters) {
+    // ...
+  }
+}
+ // @ abstract interface
+// ? Like an interface class, other libraries can implement, but can't inherit, a pure interface.
+// ? Like an abstract class, a pure interface can have abstract members.
 
 // @ sealed
 
