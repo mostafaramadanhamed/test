@@ -56,6 +56,30 @@ base class BB extends B {
 //   }
 // }
 // @final
+// ? To close the type hierarchy, use the final modifier.
+// ? Final classes can be extended or implemented within the same library.
+// ? The final modifier encompasses the effects of base, and therefore any subclasses must also be marked base, final, or sealed
+final class D {
+  void moveForward(int meters) {
+    // ...
+  }
+}
+// Can be constructed.
+D myD = D();
+
+// ! ERROR: Can't be inherited.
+// class DD extends D {
+//   int passengers = 4;
+//   // ...
+// }
+//
+//  class MoD implements D {
+//   ! ERROR: Can't be implemented.
+// /  @override
+//   void moveForward(int meters) {
+//     // ...
+//   }
+
 
 // @ interface
 //? interface modifier. Libraries outside of the interface's own defining library can implement the interface, but not extend it
