@@ -109,5 +109,18 @@ class MoC implements C {
 // ? Like an abstract class, a pure interface can have abstract members.
 
 // @ sealed
+// ? To create a known, enumerable set of subtypes, use the sealed modifier.
+// ? This allows you to create a switch over those subtypes that is statically ensured to be exhaustive.
+sealed class E{
 
+}
+// !can't be constructed
+// E RT =E();
+// Can be extended
+class EE extends E {
+
+}
+// can be implemented
+class MOE implements E {}
 // @ mixin
+// ?
