@@ -122,5 +122,10 @@ class EE extends E {
 }
 // can be implemented
 class MOE implements E {}
-// @ mixin
-// ?
+// @ Combining modifiers
+// ? You can combine some modifiers for layered restrictions. A class declaration can be, in order:
+
+// * (Optional) abstract, describing whether the class can contain abstract members and prevents instantiation.
+// * (Optional) One of base, interface, final or sealed, describing restrictions on other libraries subtyping the class.
+// * (Optional) mixin, describing whether the declaration can be mixed in.
+// * The class keyword itself.
