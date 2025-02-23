@@ -31,7 +31,30 @@ class MockVehicle implements Vehicle {
 }
 
 // @ base
+// To enforce inheritance of a class or mixin's implementation,
+// use the base modifier. A base class disallows implementation outside of its own library.
+base class B {
+  void moveForward(int meters) {
+    // ...
+  }
+}
+B myB = B();
 
+// Can be extended.
+// ? child must be same type ( base || final || sealed)
+base class BB extends B {
+  int passengers = 4;
+// ...
+}
+
+
+// !ERROR: Can't be implemented.
+// base class MoB implements B {
+// /  @override
+//   void moveForward() {
+//     // ...
+//   }
+// }
 // @final
 
 // @ interface
