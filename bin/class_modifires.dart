@@ -129,3 +129,12 @@ class MOE implements E {}
 // * (Optional) One of base, interface, final or sealed, describing restrictions on other libraries subtyping the class.
 // * (Optional) mixin, describing whether the declaration can be mixed in.
 // * The class keyword itself.
+
+// @ Class modifiers for API maintainers
+// ? The mixin modifier on classes
+mixin class Both {}
+
+class UseAsMixin with Both {}
+class UseAsSuperclass extends Both {}
+
+// @
