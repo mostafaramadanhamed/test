@@ -24,3 +24,12 @@ void fib40() async {
 //* Pointer
 //* UserTag
 //* Instances of classes that are marked with @pragma('vm:isolate-unsendable')
+
+//@ situations where they can be useful:
+
+//? Parsing and decoding exceptionally large JSON blobs.
+//? Processing and compressing photos, audio and video.
+//? Converting audio and video files.
+//? Performing complex searching and filtering on large lists or within file systems.
+//? Performing I/O, such as communicating with a database.
+//? Handling a large volume of network requests.
