@@ -51,6 +51,8 @@ assert(double.parse('0.50') == 0.5);
   var vegetables = List.filled(99, 'broccoli');
   assert(vegetables.every((v) => v == 'broccoli'));
   // @ Sets
+  //? A set in Dart is an unordered collection of unique items.
+  //? Because a set is unordered, you can't get a set's items by index (position).
   // Create an empty set of strings.
   var ingredients = <String>{};
 
@@ -79,5 +81,38 @@ assert(double.parse('0.50') == 0.5);
   var intersection = ingredients.intersection(nobleGases);
   assert(intersection.length == 1);
   assert(intersection.contains('xenon'));
+  // @ Maps
+  //? A map, commonly known as a dictionary or hash, is an unordered collection of key-value pairs.
+  //? Maps associate a key to some value for easy retrieval. Unlike in JavaScript, Dart objects are not maps.
+  // Maps often use strings as keys.
+  var hawaiianBeaches = {
+    'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
+    'Big Island': ['Wailea Bay', 'Pololu Beach'],
+    'Kauai': ['Hanalei', 'Poipu'],
+  };
+
+// Maps can be built from a constructor.
+  var searchTerms = {};
+
+// Maps are parameterized types; you can specify what
+// types the key and value should be.
+  var nobleGas = <int, String>{};
+   nobleGas = {54: 'xenon'};
+
+// Retrieve a value with a key.
+  assert(nobleGas[54] == 'xenon');
+
+// Check whether a map contains a key.
+  assert(nobleGas.containsKey(54));
+
+// Remove a key and its value.
+  nobleGases.remove(54);
+  assert(!nobleGas.containsKey(54));
+  var teamAssignments = <String, String>{};
+  teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
+  assert(teamAssignments['Catcher'] != null);
 }
 
+
+pickToughestKid() {
+}
