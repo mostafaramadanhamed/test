@@ -50,6 +50,34 @@ assert(double.parse('0.50') == 0.5);
 // You can also create a List using one of the constructors.
   var vegetables = List.filled(99, 'broccoli');
   assert(vegetables.every((v) => v == 'broccoli'));
+  // @ Sets
+  // Create an empty set of strings.
+  var ingredients = <String>{};
 
+// Add new items to it.
+  ingredients.addAll(['gold', 'titanium', 'xenon']);
+  assert(ingredients.length == 3);
+
+// Adding a duplicate item has no effect.
+  ingredients.add('gold');
+  assert(ingredients.length == 3);
+
+// Remove an item from a set.
+  ingredients.remove('gold');
+  assert(ingredients.length == 2);
+
+
+
+
+  assert(ingredients.contains('titanium'));
+
+// Check whether all the items are in the set.
+  assert(ingredients.containsAll(['titanium', 'xenon']));
+// You can also create sets using
+// one of the constructors.
+  var nobleGases = Set.from(['xenon', 'argon']);
+  var intersection = ingredients.intersection(nobleGases);
+  assert(intersection.length == 1);
+  assert(intersection.contains('xenon'));
 }
 
