@@ -90,9 +90,10 @@ assert(double.parse('0.50') == 0.5);
     'Big Island': ['Wailea Bay', 'Pololu Beach'],
     'Kauai': ['Hanalei', 'Poipu'],
   };
+  // clear all elements
+  hawaiianBeaches.clear();
 
-// Maps can be built from a constructor.
-  var searchTerms = {};
+
 
 // Maps are parameterized types; you can specify what
 // types the key and value should be.
