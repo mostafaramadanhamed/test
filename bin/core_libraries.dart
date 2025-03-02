@@ -129,6 +129,26 @@ assert(double.parse('0.50') == 0.5);
 
   var decodedCo = Uri.decodeComponent(encoded);
   assert(uri == decodedCo);
+// ? parse URIS
+  var uriParse = Uri.parse('https://example.org:8080/foo/bar#frag');
+
+  assert(uriParse.scheme == 'https');
+  assert(uriParse.host == 'example.org');
+  assert(uriParse.path == '/foo/bar');
+  assert(uriParse.fragment == 'frag');
+  assert(uriParse.origin == 'https://example.org:8080');
+// ? build URIS
+  var uriBuild = Uri(
+    scheme: 'https',
+    host: 'example.org',
+    path: '/foo/bar',
+    fragment: 'frag',
+    queryParameters: {'lang': 'dart'},
+  );
+  assert(uriBuild.toString() == 'https://example.org/foo/bar?lang=dart#frag');
+  //? another way for building
+  var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
+  assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
 
 }
 
