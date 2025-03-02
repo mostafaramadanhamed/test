@@ -2,6 +2,10 @@
 // @ dart core
 // ? provides a small but critical set of built-in functionality.
 // ? This library is automatically imported into every Dart program.
+import 'dart:collection';
+
+pickToughestKid() {
+}
 void main()
 {
 assert(int.parse('42') == 42);
@@ -179,8 +183,62 @@ assert(double.parse('0.50') == 0.5);
   // 1/1/1970, UTC
   var unixEpoch = DateTime.utc(1970);
   assert(unixEpoch.millisecondsSinceEpoch == 0);
+  //@ Compare to
+  var short = const Line(1);
+  var long = const Line(100);
+  assert(short.compareTo(long) < 0);
+  //@ implementing map keys
+  var p1 = Person('Bob', 'Smith');
+  var p2 = Person('Bob', 'Smith');
+  var p3 = 'not a person';
+  assert(p1.hashCode == p2.hashCode);
+  assert(p1 == p2);
+  assert(p1 != p3);
+  for (final process in Processes()) {
+    // Do something with the process.
+  }
 }
 
+class Line implements Comparable<Line> {
+  final int length;
+  const Line(this.length);
 
-pickToughestKid() {
+  @override
+  int compareTo(Line other) => length - other.length;
+}
+class Person {
+  final String firstName, lastName;
+
+  Person(this.firstName, this.lastName);
+
+  // Override hashCode using the static hashing methods
+  // provided by the `Object` class.
+  @override
+  int get hashCode => Object.hash(firstName, lastName);
+
+  // You should generally implement operator `==` if you
+  // override `hashCode`.
+  @override
+  bool operator ==(Object other) {
+    return other is Person &&
+        other.firstName == firstName &&
+        other.lastName == lastName;
+  }
+}
+class Process {
+  // Represents a process...
+}
+
+class ProcessIterator implements Iterator<Process> {
+  @override
+  Process get current => Process();
+  @override
+  bool moveNext() => true;
+}
+
+// A mythical class that lets you iterate through all
+// processes. Extends a subclass of [Iterable].
+class Processes extends IterableBase<Process> {
+  @override
+  final Iterator<Process> iterator = ProcessIterator();
 }
