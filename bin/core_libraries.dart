@@ -194,9 +194,15 @@ assert(double.parse('0.50') == 0.5);
   assert(p1.hashCode == p2.hashCode);
   assert(p1 == p2);
   assert(p1 != p3);
+  //@ iteration
   for (final process in Processes()) {
     // Do something with the process.
   }
+  //@ Exceptions
+  //? NoSuchMethodError
+  //* Thrown when a receiving object (which might be null) does not implement a method.
+  //? ArgumentError
+  //* Can be thrown by a method that encounters an unexpected argument.
 }
 
 class Line implements Comparable<Line> {
@@ -241,4 +247,12 @@ class ProcessIterator implements Iterator<Process> {
 class Processes extends IterableBase<Process> {
   @override
   final Iterator<Process> iterator = ProcessIterator();
+}
+class FooException implements Exception {
+  final String? msg;
+
+  const FooException([this.msg]);
+
+  @override
+  String toString() => msg ?? 'FooException';
 }
