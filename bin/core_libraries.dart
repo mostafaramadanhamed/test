@@ -112,6 +112,24 @@ assert(double.parse('0.50') == 0.5);
   var teamAssignments = <String, String>{};
   teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
   assert(teamAssignments['Catcher'] != null);
+
+  // @ URLS
+  var uri = 'https://example.org/api?foo=some message';
+// full
+  var encoded = Uri.encodeFull(uri);
+  assert(encoded == 'https://example.org/api?foo=some%20message');
+
+  var decoded = Uri.decodeFull(encoded);
+  assert(uri == decoded);
+  //? component
+  var encodedCo = Uri.encodeComponent(uri);
+  assert(
+  encodedCo == 'https%3A%2F%2Fexample.org%2Fapi%3Ffoo%3Dsome%20message',
+  );
+
+  var decodedCo = Uri.decodeComponent(encoded);
+  assert(uri == decodedCo);
+
 }
 
 
