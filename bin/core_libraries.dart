@@ -150,6 +150,35 @@ assert(double.parse('0.50') == 0.5);
   var httpUri = Uri.http('example.org', '/foo/bar', {'lang': 'dart'});
   assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
 
+  //@ Date Time
+  // Get the current date and time.
+  var now = DateTime.now();
+
+// Create a new DateTime with the local time zone.
+  var y2k = DateTime(2000); // January 1, 2000
+
+// Specify the month and day.
+  y2k = DateTime(2000, 1, 2); // January 2, 2000
+
+// Specify the date as a UTC time.
+  y2k = DateTime.utc(2000); // 1/1/2000, UTC
+
+// Specify a date and time in ms since the Unix epoch.
+  y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
+
+// Parse an ISO 8601 date in the UTC time zone.
+  y2k = DateTime.parse('2000-01-01T00:00:00Z');
+
+// Create a new DateTime from an existing one, adjusting just some properties:
+  var sameTimeLastYear = now.copyWith(year: now.year - 1);
+  //? The millisecondsSinceEpoch property of a date returns the number of milliseconds since the "Unix epoch"—January 1, 1970, UTC:
+  // 1/1/2000, UTC
+  var y2 = DateTime.utc(2000);
+  assert(y2.millisecondsSinceEpoch == 946684800000);
+
+  // 1/1/1970, UTC
+  var unixEpoch = DateTime.utc(1970);
+  assert(unixEpoch.millisecondsSinceEpoch == 0);
 }
 
 
