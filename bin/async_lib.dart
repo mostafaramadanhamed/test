@@ -1,19 +1,16 @@
-
 //@ Future
 //? Future objects appear throughout the Dart libraries, often as the object returned by an asynchronous method.
 //? When a future completes, its value is ready to use.
-
 
 //? Using await
 //* code with then instead of async and await
 void runUsingFuture(dynamic args) {
   // ...
-  findEntryPoint()
-      .then((entryPoint) {
+  findEntryPoint().then((entryPoint) {
     return runExecutable(entryPoint, args);
-  })
-      .then(flushThenExit);
+  }).then(flushThenExit);
 }
+
 //* code with async and await
 Future<void> runUsingAsyncAwait(dynamic args) async {
   // ...
@@ -21,46 +18,59 @@ Future<void> runUsingAsyncAwait(dynamic args) async {
   var exitCode = await runExecutable(entryPoint, args);
   await flushThenExit(exitCode);
 }
-flushThenExit(exitCode) {
-}
 
-runExecutable(entryPoint, args) {
-}
+flushThenExit(exitCode) {}
 
-findEntryPoint() {
-}
+runExecutable(entryPoint, args) {}
+
+findEntryPoint() {}
 
 //? Chaining multiple asynchronous methods
 //* then
 
-example(){
-
-Future result = costlyQuery('url');
-result
-    .then(
-(value) => expensiveWork(value))
-    .then((_) => lengthyComputation())
-    .then((_) => print('Done!'))
-    .catchError((exception) {
+example() {
+  Future result = costlyQuery('url');
+  result
+      .then((value) => expensiveWork(value))
+      .then((_) => lengthyComputation())
+      .then((_) => print('Done!'))
+      .catchError((exception) {
 /* Handle exception... */
-});}
+  });
+}
 
 //* async-await
-example2()async{
+example2() async {
   try {
-final value = await costlyQuery('url');
-await expensiveWork(value);
-await lengthyComputation();
-print('Done!');
-} catch (e) {
+    final value = await costlyQuery('url');
+    await expensiveWork(value);
+    await lengthyComputation();
+    print('Done!');
+  } catch (e) {
 /* Handle exception... */
-}}
+  }
+}
 
-lengthyComputation() {
-}
+lengthyComputation() {}
 Future costlyQuery(url) async {
-return 'l';
+  return 'l';
 }
-expensiveWork(value) {
+
+expensiveWork(value) {}
+
+//? Waiting for multiple futures
+multiple() async {
+  Future<void> deleteLotsOfFiles() async => 'kk';
+
+  Future<void> copyLotsOfFiles() async => 'oo';
+
+  Future<void> checksumLotsOfOtherFiles() async => 'uu';
+
+  await Future.wait([
+    deleteLotsOfFiles(),
+    copyLotsOfFiles(),
+    checksumLotsOfOtherFiles(),
+  ]);
+  print('Done with all the long steps!');
 }
 //@ Stream
