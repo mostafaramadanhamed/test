@@ -4,6 +4,8 @@
 
 //? Using await
 //* code with then instead of async and await
+import 'dart:async';
+
 void runUsingFuture(dynamic args) {
   // ...
   findEntryPoint().then((entryPoint) {
@@ -72,5 +74,21 @@ multiple() async {
     checksumLotsOfOtherFiles(),
   ]);
   print('Done with all the long steps!');
+  //? handling error for multiple
+  try {
+    // Wait for each future in a list, returns a list of futures:
+    var results = await [deleteLotsOfFiles(), copyLotsOfFiles(), checksumLotsOfOtherFiles()].wait;
+
+  } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
+
+    print(e.values[0]);    // Prints successful future
+    print(e.values[1]);    // Prints successful future
+    print(e.values[2]);    // Prints null when the result is an error
+
+    print(e.errors[0]);    // Prints null when the result is successful
+    print(e.errors[1]);    // Prints null when the result is successful
+    print(e.errors[2]);    // Prints error
+  }
 }
+
 //@ Stream
