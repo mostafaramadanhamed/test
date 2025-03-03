@@ -30,5 +30,37 @@ runExecutable(entryPoint, args) {
 findEntryPoint() {
 }
 
+//? Chaining multiple asynchronous methods
+//* then
 
+example(){
+
+Future result = costlyQuery('url');
+result
+    .then(
+(value) => expensiveWork(value))
+    .then((_) => lengthyComputation())
+    .then((_) => print('Done!'))
+    .catchError((exception) {
+/* Handle exception... */
+});}
+
+//* async-await
+example2()async{
+  try {
+final value = await costlyQuery('url');
+await expensiveWork(value);
+await lengthyComputation();
+print('Done!');
+} catch (e) {
+/* Handle exception... */
+}}
+
+lengthyComputation() {
+}
+Future costlyQuery(url) async {
+return 'l';
+}
+expensiveWork(value) {
+}
 //@ Stream
