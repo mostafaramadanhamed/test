@@ -5,6 +5,7 @@
 //? Using await
 //* code with then instead of async and await
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 void runUsingFuture(dynamic args) {
@@ -120,6 +121,25 @@ void main(List<String> arguments) async{
   } else {
   searchFile(File('searchPath'), 'll');
   }
+
+
+
 }
-void searchFile(File entity, searchTerms) {
+void searchFile(File entity, searchTerms) {}
+//? transform data, handle error
+Future<void> readFileAwaitFor() async {
+  var config = File('config.txt');
+  Stream<List<int>> inputStream = config.openRead();
+
+  var lines = inputStream
+      .transform(utf8.decoder)
+      .transform(const LineSplitter());
+  try {
+    await for (final line in lines) {
+      print('Got ${line.length} characters from stream');
+    }
+    print('file is now closed');
+  } catch (e) {
+    print(e);
+  }
 }
