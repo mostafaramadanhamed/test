@@ -5,6 +5,7 @@
 //? Using await
 //* code with then instead of async and await
 import 'dart:async';
+import 'dart:io';
 
 void runUsingFuture(dynamic args) {
   // ...
@@ -92,3 +93,33 @@ multiple() async {
 }
 
 //@ Stream
+
+
+void main(List<String> arguments) async{
+  //? Stream's listen() method to subscribe to a list of files
+  FileSystemEntity.isDirectory('searchPath').then((isDir) {
+    if (isDir) {
+      final startingDir = Directory('searchPath');
+      startingDir.list().listen((entity) {
+        if (entity is File) {
+          searchFile(entity, 'searchTerms');
+        }
+      });
+    } else {
+      searchFile(File('searchPath'), 'searchTerms');
+    }
+  });
+  //? await for
+  if (await FileSystemEntity.isDirectory('searchPath')) {
+  final startingDir = Directory('searchPath');
+  await for (final entity in startingDir.list()) {
+  if (entity is File) {
+  searchFile(entity, 'll');
+  }
+  }
+  } else {
+  searchFile(File('searchPath'), 'll');
+  }
+}
+void searchFile(File entity, searchTerms) {
+}
