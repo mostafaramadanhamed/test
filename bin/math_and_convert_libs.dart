@@ -1,9 +1,10 @@
+import 'dart:convert';
 import 'dart:math';
 void main(){
   math();
+  convert();
 }
 //@ math
-
 void math(){
   //? Trigonometry
   // Cosine
@@ -28,5 +29,25 @@ void math(){
   var random = Random();
   random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
   random.nextInt(10); // Between 0 and 9.
-  //?
+}
+//@ convert
+void convert(){
+//? decoding encoding json
+// NOTE: Be sure to use double quotes ("),
+// not single quotes ('), inside the JSON string.
+// This string is JSON, not Dart.
+  var jsonString = '''
+  [
+    {"score": 40},
+    {"score": 80}
+  ]
+''';
+
+  var scores = jsonDecode(jsonString);
+  assert(scores is List);
+
+  var firstScore = scores[0];
+  assert(firstScore is Map);
+  assert(firstScore['score'] == 40);
+
 }
