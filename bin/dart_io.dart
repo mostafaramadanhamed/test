@@ -49,4 +49,20 @@ void main() async {
   var sinkMode = logFile.openWrite(mode: FileMode.append);
   await sinkMode.flush();
   await sinkMode.close();
+  //? LISTING FILES IN DIRECTORY
+  var dir = Directory('tmp');
+
+  try {
+    var dirList = dir.list();
+    await for (final FileSystemEntity f in dirList) {
+      if (f is File) {
+        print('Found file ${f.path}');
+      } else if (f is Directory) {
+        print('Found dir ${f.path}');
+      }
+    }
+  } catch (e) {
+    print(e.toString());
+  }
+
 }
