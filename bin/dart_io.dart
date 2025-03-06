@@ -3,7 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 //@ Files and Directions
-void main() async {
+void mainFiles() async {
   var config = File('config.txt');
 //? READING FILE AS TEXT
   // Put the whole file in a single string.
@@ -69,4 +69,25 @@ void main() async {
   //* Deleting a file or directory: delete() in File and Directory
   //* Getting the length of a file: length() in File
   //* Getting random access to a file: open() in File
+}
+//@ HTTP clients and servers
+//? HTTP SERVER
+void mainHTTTP() async {
+  final requests = await HttpServer.bind('localhost', 8888);
+  await for (final request in requests) {
+    processRequest(request);
+  }
+}
+
+void processRequest(HttpRequest request) {
+  print('Got request for ${request.uri.path}');
+  final response = request.response;
+  if (request.uri.path == '/dart') {
+    response
+      ..headers.contentType = ContentType('text', 'plain')
+      ..write('Hello from the server');
+  } else {
+    response.statusCode = HttpStatus.notFound;
+  }
+  response.close();
 }
