@@ -37,4 +37,16 @@ void main() async {
   } catch (e) {
     print(e);
   }
+  //? WRITING FILE CONTENTS
+  var logFile = File('log.txt');
+  var sink = logFile.openWrite();
+  sink.write('FILE ACCESSED ${DateTime.now()}\n');
+  await sink.flush();
+  await sink.close();
+  //? To add to the end of the file,
+  //? use the optional mode parameter to specify FileMode.append:
+
+  var sinkMode = logFile.openWrite(mode: FileMode.append);
+  await sinkMode.flush();
+  await sinkMode.close();
 }
