@@ -64,5 +64,9 @@ void main() async {
   } catch (e) {
     print(e.toString());
   }
-
+  //? OTHER FUNCTION
+  //* Creating a file or directory: create() in File and Directory
+  //* Deleting a file or directory: delete() in File and Directory
+  //* Getting the length of a file: length() in File
+  //* Getting random access to a file: open() in File
 }
