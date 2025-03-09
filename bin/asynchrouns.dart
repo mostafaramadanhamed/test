@@ -27,3 +27,13 @@ Future<void> main() async {
   print('Fetching user order...');
   print(await createOrderMessage());
 }
+//? handling error
+Future<void> printOrderMessage() async {
+  try {
+    print('Awaiting user order...');
+    var order = await fetchUserOrder();
+    print(order);
+  } catch (err) {
+    print('Caught error: $err');
+  }
+}
