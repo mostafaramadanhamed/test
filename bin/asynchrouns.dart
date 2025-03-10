@@ -1,4 +1,5 @@
 //@ Asynchronous
+ //@ Future
 //? This example shows how *not* to write asynchronous Dart code.
 //* Synchronous
 String createSOrderMessage() {
@@ -37,3 +38,15 @@ Future<void> printOrderMessage() async {
     print('Caught error: $err');
   }
 }
+
+ //@ Stream
+//? receiving streams
+Future<int> sumStream(Stream<int> stream) async {
+  var sum = 0;
+  await for (final value in stream) {
+    sum += value;
+  }
+  return sum;
+}
+//? error of event
+//*  You can catch the error using try-catch
