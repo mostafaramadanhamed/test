@@ -50,3 +50,14 @@ extension Human on String {}
 //* import 'dart:math' as Math;
 //* import 'package:angular_components/angular_components.dart' as angularComponents;
 //* import 'package:js/js.dart' as JS;
+
+//?DO name other identifiers using lowerCamelCase
+//* Class members, top-level definitions, variables, parameters,
+//* and named parameters should capitalize the first letter of each word except the first word, and use no separators.
+//>>good
+var count = 3;
+
+ // HttpRequest httpRequest;
+
+ void align(bool clearItems) { }
+
