@@ -27,3 +27,26 @@ typedef Predicate<T> = bool Function(T value);
 
 //? DO name extensions using UpperCamelCase
 extension Human on String {}
+
+//? DO name packages, directories, and source files using lowercase_with_underscores
+
+//>> good
+//* my_package
+//* └─ lib
+//*    └─ file_system.dart
+//*    └─ slider_menu.dart
+//! bad
+//* mypackage
+//* └─ lib
+//*    └─ file-system.dart
+//*    └─ SliderMenu.dart
+
+//? DO name import prefixes using lowercase_with_underscores
+//>>good
+//* import 'dart:math' as math;
+//* import 'package:angular_components/angular_components.dart' as angular_components;
+//* import 'package:js/js.dart' as js;
+//! bad
+//* import 'dart:math' as Math;
+//* import 'package:angular_components/angular_components.dart' as angularComponents;
+//* import 'package:js/js.dart' as JS;
