@@ -61,3 +61,21 @@ var count = 3;
 
  void align(bool clearItems) { }
 
+//? PREFER using lowerCamelCase for constant names
+//>> good
+const pi=3.14;
+//! bad
+const PI =3.14;
+
+//? DO capitalize acronyms and abbreviations longer than two letters like words
+//>> good
+//? Longer than two letters, so always like a word:
+//? Http // "hypertext transfer protocol"
+//? Nasa // "national aeronautics and space administration"
+//? Two letters, capitalized in English, so capitalized in an identifier:
+//? UI // "user interface"
+//? Two letters, not capitalized in English, so like a word in an identifier:
+//? Mr // "mister"
+//! HTTP // "hypertext transfer protocol"
+//! Ui // "user interface"
+//! MR // "mister"
