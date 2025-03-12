@@ -79,3 +79,22 @@ const PI =3.14;
 //! HTTP // "hypertext transfer protocol"
 //! Ui // "user interface"
 //! MR // "mister"
+
+//? PREFER using wildcards for unused callback parameters
+//* futureOfVoid.then((_) {
+//* print('Operation complete.');
+//* });
+
+//? DON'T use a leading underscore for identifiers that aren't private
+//? DON'T use prefix letters
+//>> good
+//* defaultTimeout
+//! bad
+//* kDefaultTimeout
+
+//? DON'T explicitly name libraries
+//! bad
+//! library my_library;
+//>> good
+//>> @TestOn('browser')
+//>> library;
