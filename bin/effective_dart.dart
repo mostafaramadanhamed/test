@@ -98,3 +98,8 @@ const PI =3.14;
 //>> good
 //>> @TestOn('browser')
 //>> library;
+//@ ordering
+//? DO place dart: imports before other imports
+//? DO place package: imports before relative imports
+//? DO specify exports in a separate section after all imports
+//? DO sort sections alphabetically
