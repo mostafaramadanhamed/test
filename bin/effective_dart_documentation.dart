@@ -43,7 +43,8 @@ void greet(String name) {
 //?AVOID using markdown excessively
 //?AVOID using HTML for formatting
 //?PREFER backtick fences for code blocks
-//?
-//?
-//?
-//?
+
+//@ Writing
+//?PREFER brevity
+//?AVOID abbreviations and acronyms unless they are obvious
+//?PREFER using "this" instead of "the" to refer to a member's instance
