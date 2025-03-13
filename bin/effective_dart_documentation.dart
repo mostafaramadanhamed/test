@@ -38,3 +38,12 @@ void greet(String name) {
 //?DO use square brackets in doc comments to refer to in-scope identifiers
 //?DO use prose to explain parameters, return values, and exceptions
 //?DO put doc comments before metadata annotations
+
+//@ Markdown
+//?AVOID using markdown excessively
+//?AVOID using HTML for formatting
+//?PREFER backtick fences for code blocks
+//?
+//?
+//?
+//?
