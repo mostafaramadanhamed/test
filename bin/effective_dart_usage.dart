@@ -113,3 +113,29 @@ class UploadException2 {
     return 'Could not upload (no response).';
   }
 }
+
+//@ String
+//?DO use adjacent strings to concatenate string literals
+//* example
+//>> good
+// raiseAlarm(
+// 'ERROR: Parts of the spaceship are on fire. Other '
+// 'parts are overrun by martians. Unclear which are which.',
+// );
+//! bad
+// raiseAlarm(
+//   'ERROR: Parts of the spaceship are on fire. Other ' +
+//       'parts are overrun by martians. Unclear which are which.',
+// );
+//?PREFER using interpolation to compose strings and values
+//* example
+//>> good
+// 'Hello, $name! You are ${year - birth} years old.';
+//! bad
+// 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
+//? AVOID using curly braces in interpolation when not needed
+//* example
+//>> good
+// var greeting = 'Hi, $name! I love your ${decade}s costume.';
+//! bad
+// var greeting2 = 'Hi, ${name}! I love your ${decade}s costume.';
