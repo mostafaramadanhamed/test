@@ -72,4 +72,44 @@ if (nonNullableBool == true) {
 if (nonNullableBool == false) {
 //...
 }}
-//?
+//? AVOID late variables if you need to check whether they are initialized
+//? CONSIDER type promotion or null-check patterns for using nullable types
+//* example
+class Response {
+  final int errorCode;
+  final String reason;
+  final String url;
+  Response( this.errorCode, this.reason, this.url);
+}
+//>> good
+class UploadException {
+  final Response  ? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    if (response case var response?) {
+      return 'Could not complete upload to ${response.url} '
+          '(error code ${response.errorCode}): ${response.reason}.';
+    }
+    return 'Could not upload (no response).';
+  }
+}
+
+//! bad
+class UploadException2 {
+  final Response? response;
+
+  UploadException2([this.response]);
+
+  @override
+  String toString() {
+    if (response != null) {
+      return 'Could not complete upload to ${response!.url} '
+          '(error code ${response!.errorCode}): ${response!.reason}.';
+    }
+
+    return 'Could not upload (no response).';
+  }
+}
