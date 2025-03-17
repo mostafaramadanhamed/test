@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 //@ Usage
 
 //@ libraries
@@ -11,7 +12,7 @@ import 'dart:io';
 //? DON'T explicitly initialize variables to null
 //* example
 //>> good
-Item?  bestDeal(List<Item> cart) {
+Item? bestDeal(List<Item> cart) {
   Item? bestItem;
 
   for (final item in cart) {
@@ -27,6 +28,7 @@ class Item {
   final num price;
   Item(this.price);
 }
+
 //! bad
 Item? bestDeal2(List<Item> cart) {
   Item? bestItem = null;
@@ -43,7 +45,6 @@ Item? bestDeal2(List<Item> cart) {
 //* example
 //>> good
 
-
 void error([String? message]) {
   stderr.write(message ?? '\n');
 }
@@ -52,26 +53,28 @@ void error([String? message]) {
 void error2([String? message = null]) {
   stderr.write(message ?? '\n');
 }
+
 //? DON'T use true or false in equality operations
 //* example
 //>> good
-void example( bool nonNullableBool){
-
+void example(bool nonNullableBool) {
   if (nonNullableBool) {
 //...
-}
+  }
 
-if (!nonNullableBool) {
+  if (!nonNullableBool) {
 //...
-}
+  }
 //! bad
-if (nonNullableBool == true) {
+  if (nonNullableBool == true) {
 //...
+  }
+
+  if (nonNullableBool == false) {
+//...
+  }
 }
 
-if (nonNullableBool == false) {
-//...
-}}
 //? AVOID late variables if you need to check whether they are initialized
 //? CONSIDER type promotion or null-check patterns for using nullable types
 //* example
@@ -79,11 +82,12 @@ class Response {
   final int errorCode;
   final String reason;
   final String url;
-  Response( this.errorCode, this.reason, this.url);
+  Response(this.errorCode, this.reason, this.url);
 }
+
 //>> good
 class UploadException {
-  final Response  ? response;
+  final Response? response;
 
   UploadException([this.response]);
 
@@ -139,3 +143,54 @@ class UploadException2 {
 // var greeting = 'Hi, $name! I love your ${decade}s costume.';
 //! bad
 // var greeting2 = 'Hi, ${name}! I love your ${decade}s costume.';
+class Address {}
+
+//@ Collection
+//?DO use collection literals when possible
+//>> good
+var points = <Point>[];
+var addresses = <String, Address>{};
+var counts = <int>{};
+//! bad
+var addresses2 = Map<String, Address>();
+var counts2 = Set<int>();
+//?DON'T use .length to see if a collection is empty
+//>> good
+fgh() {
+  String lunchBox = '';
+  if (lunchBox.isEmpty) return 'so hungry...';
+//! bad
+  if (lunchBox.length == 0) return 'so hungry...';
+}
+
+//?AVOID using Iterable.forEach() with a function literal
+//>> good
+//* for (final person in people) {
+//* }
+//! bad
+// * people.forEach((person) {
+// * });
+//?DON'T use List.from() unless you intend to change the type of the result
+//>> good
+ex() {
+  var iterable = [1, 2, 3];
+  print(iterable.toList().runtimeType);
+//! bad
+  print(List.from(iterable).runtimeType);
+}
+//?
+//>> good
+
+//! bad
+//?
+//>> good
+
+//! bad
+//?
+//>> good
+
+//! bad
+//?
+//>> good
+
+//! bad
