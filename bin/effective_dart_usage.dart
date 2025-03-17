@@ -278,11 +278,43 @@ class Circle2 {
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
 }
+//@ Members
+//?DON'T wrap a field in a getter and setter unnecessarily
+// ?PREFER using a final field to make a read-only property
+//>> good
+class Box {
+  final Object contents=[];
+}
+//! bad
+class Box2 {
+  Object? _contents;
+  Object? get contents => _contents;
+  set contents(Object? value) {
+    _contents = value;
+  }
+}
+
+//?CONSIDER using => for simple members
+//>> good
+
+String capitalize(String name) =>
+    '${name[0].toUpperCase()}${name.substring(1)}';
+//! bad
+String capitalize2(String name) {
+ return '${name[0].toUpperCase()}${name.substring(1)}';
+}
 //?
 //>> good
 
 //! bad
+//?
+//>> good
 
+//! bad
+//?
+//>> good
+
+//! bad
 //?
 //>> good
 
