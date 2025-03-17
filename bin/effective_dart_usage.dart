@@ -178,6 +178,7 @@ ex() {
 //! bad
   print(List.from(iterable).runtimeType);
 }
+
 //?DO use whereType() to filter a collection by type
 //>> good
 var objects = [1, 'a', 2, 'b', 3];
@@ -197,12 +198,74 @@ List<int> singletonList(int value) {
   list.add(value);
   return list;
 }
+
 //! bad
 List<int> singletonList2(int value) {
   var list = []; // List<dynamic>.
   list.add(value);
   return list.cast<int>();
 }
+
+//@ Functions
+//? DO use a function declaration to bind a function to a name
+//>> good
+void localFunction() {}
+//! bad
+var localFunction2 = () {};
+//?DON'T create a lambda when a tear-off will do
+//>> good
+nonLambda() {
+  var charCodes = [68, 97, 114, 116];
+  var buffer = StringBuffer();
+
+// Function:
+  charCodes.forEach(print);
+
+// Method:
+  charCodes.forEach(buffer.write);
+
+// Named constructor:
+  var strings = charCodes.map(String.fromCharCode);
+
+// Unnamed constructor:
+  var buffers = charCodes.map(StringBuffer.new);
+}
+//! bad
+lambda(){
+  var charCodes = [68, 97, 114, 116];
+  var buffer = StringBuffer();
+
+// Function:
+  charCodes.forEach((code) {
+    print(code);
+  });
+
+// Method:
+  charCodes.forEach((code) {
+    buffer.write(code);
+  });
+
+// Named constructor:
+  var strings = charCodes.map((code) => String.fromCharCode(code));
+
+// Unnamed constructor:
+  var buffers = charCodes.map((code) => StringBuffer(code));
+}
+//?
+//>> good
+
+//! bad
+
+//?
+//>> good
+
+//! bad
+
+//?
+//>> good
+
+//! bad
+
 //?
 //>> good
 
