@@ -251,16 +251,33 @@ lambda(){
 // Unnamed constructor:
   var buffers = charCodes.map((code) => StringBuffer(code));
 }
-//?
+//@ Variable
+//?DO follow a consistent rule for var and final on local variables
 //>> good
 
 //! bad
 
-//?
+//?AVOID storing what you can calculate
 //>> good
+class Circle {
+  double radius;
 
+  Circle(this.radius);
+
+  double get area => pi * radius * radius;
+  double get circumference => pi * 2.0 * radius;
+}
 //! bad
+class Circle2 {
+  double radius;
+  double area;
+  double circumference;
 
+  Circle2(double radius)
+      : radius = radius,
+        area = pi * radius * radius,
+        circumference = pi * 2.0 * radius;
+}
 //?
 //>> good
 
