@@ -303,14 +303,47 @@ String capitalize(String name) =>
 String capitalize2(String name) {
  return '${name[0].toUpperCase()}${name.substring(1)}';
 }
-//?
+//?DON'T use this. except to redirect to a named constructor or to avoid shadowing
 //>> good
+class ShadeOfGray {
+  final int brightness;
 
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  // But now it will!
+  ShadeOfGray.alsoBlack() : this.black();
+}
 //! bad
-//?
+class ShadeOfGray2 {
+  final int brightness;
+
+  ShadeOfGray2(int val) : brightness = val;
+
+  ShadeOfGray2.black() : this(0);
+
+// This won't parse or compile!
+// ShadeOfGray.alsoBlack() : black();
+}
+//?DO initialize fields at their declaration when possible
 //>> good
+class ProfileMark {
+  final String name;
+  final DateTime start = DateTime.now();
 
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
+}
 //! bad
+class ProfileMark2 {
+  final String name;
+  final DateTime start;
+
+  ProfileMark2(this.name) : start = DateTime.now();
+  ProfileMark2.unnamed() : name = '', start = DateTime.now();
+}
+
 //?
 //>> good
 
