@@ -178,18 +178,31 @@ ex() {
 //! bad
   print(List.from(iterable).runtimeType);
 }
-//?
+//?DO use whereType() to filter a collection by type
 //>> good
-
+var objects = [1, 'a', 2, 'b', 3];
+var ints = objects.whereType<int>();
 //! bad
-//?
+var ints2 = objects.where((e) => e is int).cast<int>();
+//?DON'T use cast() when a nearby operation will do
 //>> good
-
+var stuff = <dynamic>[1, 2];
+var filter = List<int>.from(stuff);
 //! bad
-//?
+var filter2 = stuff.toList().cast<int>();
+//?AVOID using cast()
 //>> good
-
+List<int> singletonList(int value) {
+  var list = <int>[];
+  list.add(value);
+  return list;
+}
 //! bad
+List<int> singletonList2(int value) {
+  var list = []; // List<dynamic>.
+  list.add(value);
+  return list.cast<int>();
+}
 //?
 //>> good
 
