@@ -343,12 +343,72 @@ class ProfileMark2 {
   ProfileMark2(this.name) : start = DateTime.now();
   ProfileMark2.unnamed() : name = '', start = DateTime.now();
 }
+//@ Constructors
+//? DO use initializing formals when possible
+//? DON'T use late when a constructor initializer list will do
+//? DO use ; instead of {} for empty constructor bodies
+//>> good
+class Point {
+  double x, y;
+  Point(this.x, this.y);
+}
+//! bad
+class Point2 {
+  late double x, y;
+  Point2(double x, double y) : x = x, y = y;
+//  Point2(this.x, this.y) {}
+}
+//? DON'T use new
+//>> good
+//* Widget build(BuildContext context) {
+// *  return Row(
+//     children: [RaisedButton(child: Text('Increment')), Text('Click!')],
+//   );
+// }
+//! bad
+//* Widget build(BuildContext context) {
+// *  return new Row(
+//     children: [
+//       new RaisedButton(child: new Text('Increment')),
+//       new Text('Click!'),
+//     ],
+//   );
+// }
+//?DON'T use const redundantly
+//>> good
+//* const primaryColors = [
+// *  Color('red', [255, 0, 0]),
+// *  Color('green', [0, 255, 0]),
+// *  Color('blue', [0, 0, 255]),
+// * ];
+//! bad
+//* const primaryColors2 = const [
+// *  const Color('red', const [255, 0, 0]),
+// *  const Color('green', const [0, 255, 0]),
+// *  const Color('blue', const [0, 0, 255]),
+// ];
+//?
+//>> good
+
+//! bad
 
 //?
 //>> good
 
 //! bad
+
 //?
 //>> good
 
 //! bad
+
+//?
+//>> good
+
+//! bad
+
+//?
+//>> good
+
+//! bad
+
