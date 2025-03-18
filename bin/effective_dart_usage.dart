@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 //@ Usage
@@ -23,12 +24,10 @@ Item? bestDeal(List<Item> cart) {
 
   return bestItem;
 }
-
 class Item {
   final num price;
   Item(this.price);
 }
-
 //! bad
 Item? bestDeal2(List<Item> cart) {
   Item? bestItem = null;
@@ -44,16 +43,13 @@ Item? bestDeal2(List<Item> cart) {
 //? DON'T use an explicit default value of null
 //* example
 //>> good
-
 void error([String? message]) {
   stderr.write(message ?? '\n');
 }
-
 //! bad
 void error2([String? message = null]) {
   stderr.write(message ?? '\n');
 }
-
 //? DON'T use true or false in equality operations
 //* example
 //>> good
@@ -74,7 +70,6 @@ void example(bool nonNullableBool) {
 //...
   }
 }
-
 //? AVOID late variables if you need to check whether they are initialized
 //? CONSIDER type promotion or null-check patterns for using nullable types
 //* example
@@ -84,7 +79,6 @@ class Response {
   final String url;
   Response(this.errorCode, this.reason, this.url);
 }
-
 //>> good
 class UploadException {
   final Response? response;
@@ -100,7 +94,6 @@ class UploadException {
     return 'Could not upload (no response).';
   }
 }
-
 //! bad
 class UploadException2 {
   final Response? response;
@@ -432,17 +425,88 @@ somethingRisky();
 if (!canHandle(e)) throw e;
 handle(e);
 }}
-//?
+//@ Asynchrony
+//?PREFER async/await over using raw futures
 //>> good
+Future<int> countActivePlayers(String teamName) async {
+  try {
+    var team = await downloadTeam(teamName);
+    if (team == null) return 0;
 
+    var players = await team.roster;
+    return players.where((player) => player.isActive).length;
+  } catch (e) {
+    log.error(e);
+    return 0;
+  }
+}
 //! bad
+Future<int> countActivePlayers2(String teamName) {
+  return downloadTeam(teamName)
+      .then((team) {
+    if (team == null) return Future.value(0);
 
-//?
+    return team.roster.then((players) {
+      return players.where((player) => player.isActive).length;
+    });
+  })
+      .catchError((e) {
+    log.error(e);
+    return 0;
+  });
+}
+extension on double Function(num x) {
+  void error(x) {}
+}
+downloadTeam(String teamName) {
+}
+//?DON'T use async when it has no useful effect
 //>> good
-
+Future<int> fastestBranch(Future<int> left, Future<int> right) {
+  return Future.any([left, right]);
+}
 //! bad
-
-//?
+Future<int> fastestBranch2(Future<int> left, Future<int> right) async {
+  return Future.any([left, right]);
+}
+//?CONSIDER using higher-order methods to transform a stream
+//?AVOID using Completer directly
 //>> good
-
+Future<bool> fileContainsBear(String path) {
+  return File(path).readAsString().then((contents) {
+    return contents.contains('bear');
+  });
+}
 //! bad
+Future<bool> fileContainsBear2(String path) {
+  var completer = Completer<bool>();
+
+  File(path).readAsString().then((contents) {
+    completer.complete(contents.contains('bear'));
+  });
+
+  return completer.future;
+}
+//?DO test for Future<T> when disambiguating a FutureOr<T> whose type argument could be Object
+//>> good
+Future<T> logValue<T>(FutureOr<T> value) async {
+  if (value is Future<T>) {
+    var result = await value;
+    print(result);
+    return result;
+  } else {
+    print(value);
+    return value;
+  }
+}
+//! bad
+Future<T> logValue2<T>(FutureOr<T> value) async {
+  if (value is T) {
+    print(value);
+    return value;
+  } else {
+    var result = await value;
+    print(result);
+    return result;
+  }
+}
