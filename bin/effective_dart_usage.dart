@@ -230,8 +230,9 @@ nonLambda() {
 // Unnamed constructor:
   var buffers = charCodes.map(StringBuffer.new);
 }
+
 //! bad
-lambda(){
+lambda() {
   var charCodes = [68, 97, 114, 116];
   var buffer = StringBuffer();
 
@@ -267,6 +268,7 @@ class Circle {
   double get area => pi * radius * radius;
   double get circumference => pi * 2.0 * radius;
 }
+
 //! bad
 class Circle2 {
   double radius;
@@ -278,13 +280,15 @@ class Circle2 {
         area = pi * radius * radius,
         circumference = pi * 2.0 * radius;
 }
+
 //@ Members
 //?DON'T wrap a field in a getter and setter unnecessarily
 // ?PREFER using a final field to make a read-only property
 //>> good
 class Box {
-  final Object contents=[];
+  final Object contents = [];
 }
+
 //! bad
 class Box2 {
   Object? _contents;
@@ -301,8 +305,9 @@ String capitalize(String name) =>
     '${name[0].toUpperCase()}${name.substring(1)}';
 //! bad
 String capitalize2(String name) {
- return '${name[0].toUpperCase()}${name.substring(1)}';
+  return '${name[0].toUpperCase()}${name.substring(1)}';
 }
+
 //?DON'T use this. except to redirect to a named constructor or to avoid shadowing
 //>> good
 class ShadeOfGray {
@@ -315,6 +320,7 @@ class ShadeOfGray {
   // But now it will!
   ShadeOfGray.alsoBlack() : this.black();
 }
+
 //! bad
 class ShadeOfGray2 {
   final int brightness;
@@ -326,6 +332,7 @@ class ShadeOfGray2 {
 // This won't parse or compile!
 // ShadeOfGray.alsoBlack() : black();
 }
+
 //?DO initialize fields at their declaration when possible
 //>> good
 class ProfileMark {
@@ -335,14 +342,18 @@ class ProfileMark {
   ProfileMark(this.name);
   ProfileMark.unnamed() : name = '';
 }
+
 //! bad
 class ProfileMark2 {
   final String name;
   final DateTime start;
 
   ProfileMark2(this.name) : start = DateTime.now();
-  ProfileMark2.unnamed() : name = '', start = DateTime.now();
+  ProfileMark2.unnamed()
+      : name = '',
+        start = DateTime.now();
 }
+
 //@ Constructors
 //? DO use initializing formals when possible
 //? DON'T use late when a constructor initializer list will do
@@ -352,12 +363,16 @@ class Point {
   double x, y;
   Point(this.x, this.y);
 }
+
 //! bad
 class Point2 {
   late double x, y;
-  Point2(double x, double y) : x = x, y = y;
+  Point2(double x, double y)
+      : x = x,
+        y = y;
 //  Point2(this.x, this.y) {}
 }
+
 //? DON'T use new
 //>> good
 //* Widget build(BuildContext context) {
@@ -387,6 +402,36 @@ class Point2 {
 // *  const Color('green', const [0, 255, 0]),
 // *  const Color('blue', const [0, 0, 255]),
 // ];
+//@ Error Handling
+//?AVOID catches without on clauses
+//?DON'T discard errors from catches without on clauses
+//?DO throw objects that implement Error only for programmatic errors
+//?DON'T explicitly catch Error or types that implement it
+//?DO use rethrow to rethrow a caught exception
+//?
+//>> good
+exampleRethrow() {
+  try {
+    somethingRisky();
+  } catch (e) {
+    if (!canHandle(e)) rethrow;
+    handle(e);
+  }
+}
+void handle(Object e) {}
+
+bool canHandle(Object e) {
+  return true;
+}
+void somethingRisky() {}
+
+//! bad
+exampleThrow(){try {
+somethingRisky();
+} catch (e) {
+if (!canHandle(e)) throw e;
+handle(e);
+}}
 //?
 //>> good
 
@@ -401,14 +446,3 @@ class Point2 {
 //>> good
 
 //! bad
-
-//?
-//>> good
-
-//! bad
-
-//?
-//>> good
-
-//! bad
-
