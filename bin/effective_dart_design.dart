@@ -47,3 +47,17 @@
 //
 // Filter the monsters with claws *out* or include *only* those?
 // monsters.filter((monster) => monster.hasClaws);
+
+//? PREFER a noun phrase for a non-boolean property or variable
+//>> good
+//>>list.length
+//! bad
+//!list.deleteItems
+
+//?PREFER a non-imperative verb phrase for a boolean property or variable
+//>> good
+//>>isEmpty
+//>> hasElements
+//! bad
+//!empty         // Adjective or verb?
+//! withElements  // Sounds like it might hold elements.
