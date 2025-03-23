@@ -61,3 +61,34 @@
 //! bad
 //!empty         // Adjective or verb?
 //! withElements  // Sounds like it might hold elements.
+
+//? CONSIDER omitting the verb for a named boolean parameter
+// >> good
+// Isolate.spawn(entryPoint, message, paused: false);
+// var copy = List.from(elements, growable: true);
+// var regExp = RegExp(pattern, caseSensitive: false);
+
+//? PREFER the "positive" name for a boolean property or variable
+//>> good
+// if (socket.isConnected && database.hasData) {
+// socket.write(database.read());
+// }
+//! bad
+// if (!socket.isDisconnected && !database.isEmpty) {
+// socket.write(database.read());
+// }
+//? PREFER an imperative verb phrase for a function or method whose main purpose is a side effect
+//>> good
+/*
+list.add('element');
+queue.removeFirst();
+window.refresh();
+ */
+//? PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
+//>> good
+/*
+var element = list.elementAt(3);
+var first = list.firstWhere(test);
+var char = string.codeUnitAt(4);
+ */
+//! bad
