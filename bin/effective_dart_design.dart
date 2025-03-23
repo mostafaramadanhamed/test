@@ -91,4 +91,35 @@ var element = list.elementAt(3);
 var first = list.firstWhere(test);
 var char = string.codeUnitAt(4);
  */
+//? CONSIDER an imperative verb phrase for a function or method if you want to draw attention to the work it performs
+//>> good
+/*
+var table = database.downloadData();
+var packageVersions = packageGraph.solveConstraints();
+ */
+//?AVOID starting a method name with get
+//?PREFER naming a method to___() if it copies the object's state to a new object
+//?PREFER naming a method as___() if it returns a different representation backed by the original object
+//>> good
+/*
+list.toSet();
+var map = table.asMap();
+ */
+//? AVOID describing the parameters in the function's or method's name
+//>> good
+/*
+list.add(element);
+map.remove(key);
+ */
 //! bad
+/*
+list.addElement(element)
+map.removeKey(key)
+ */
+//? DO follow existing mnemonic conventions when naming type parameters
+//*E for the element type in a collection:
+//*K and V for the key and value types in an associative collection:
+//*R for a type used as the return type of a function or a class's methods. This isn't common,
+//* but appears in typedefs sometimes and in classes that implement the visitor pattern:
+//*Otherwise, use T, S, and U for generics that have a single type parameter and where the surrounding type makes its meaning obvious.
+//*There are multiple letters here to allow nesting without shadowing a surrounding name.
