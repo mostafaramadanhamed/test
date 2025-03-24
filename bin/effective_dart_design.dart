@@ -127,4 +127,33 @@ map.removeKey(key)
 //@ libraries
 //?PREFER making declarations private
 //?CONSIDER declaring multiple classes in the same library
-//?
+//@ classes and mixins
+//?AVOID defining a one-member abstract class when a simple function will do
+//>> good
+typedef Predicate<E> = bool Function(E element);
+//! bad
+abstract class Predicate2<E> {
+  bool test(E element);
+}
+//?AVOID defining a class that contains only static members
+//>> good
+DateTime mostRecent(List<DateTime> dates) {
+  return dates.reduce((a, b) => a.isAfter(b) ? a : b);
+}
+
+const _favoriteMammal = 'weasel';
+//! bad
+class DateUtils {
+  static DateTime mostRecent(List<DateTime> dates) {
+    return dates.reduce((a, b) => a.isAfter(b) ? a : b);
+  }
+}
+
+class _Favorites {
+  static const mammal = 'weasel';
+}
+//?AVOID extending a class that isn't intended to be subclassed
+//?DO use class modifiers to control if your class can be extended
+//?AVOID implementing a class that isn't intended to be an interface
+//?DO use class modifiers to control if your class can be an interface
+//?PREFER defining a pure mixin or pure class to a mixin class
