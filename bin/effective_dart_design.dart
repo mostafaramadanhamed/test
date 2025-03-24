@@ -157,3 +157,7 @@ class _Favorites {
 //?AVOID implementing a class that isn't intended to be an interface
 //?DO use class modifiers to control if your class can be an interface
 //?PREFER defining a pure mixin or pure class to a mixin class
+
+//@ Constructors
+
+//? CONSIDER making your constructor const if the class supports it
