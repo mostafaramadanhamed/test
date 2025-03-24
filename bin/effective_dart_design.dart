@@ -123,3 +123,8 @@ map.removeKey(key)
 //* but appears in typedefs sometimes and in classes that implement the visitor pattern:
 //*Otherwise, use T, S, and U for generics that have a single type parameter and where the surrounding type makes its meaning obvious.
 //*There are multiple letters here to allow nesting without shadowing a surrounding name.
+
+//@ libraries
+//?PREFER making declarations private
+//?CONSIDER declaring multiple classes in the same library
+//?
