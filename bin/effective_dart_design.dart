@@ -169,6 +169,6 @@ class _Favorites {
 //?DON'T define a setter without a corresponding getter
 //?AVOID using runtime type tests to fake overloading
 //?AVOID public late final fields without initializers
-//?
-//?
+//?AVOID returning nullable Future, Stream, and collection types
+//?AVOID returning this from methods just to enable a fluent interface
 //?
