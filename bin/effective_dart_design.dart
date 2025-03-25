@@ -161,3 +161,14 @@ class _Favorites {
 //@ Constructors
 
 //? CONSIDER making your constructor const if the class supports it
+
+//@ Members
+//? PREFER making fields and top-level variables final
+//?DO use getters for operations that conceptually access properties
+//?DO use setters for operations that conceptually change properties
+//?DON'T define a setter without a corresponding getter
+//?AVOID using runtime type tests to fake overloading
+//?AVOID public late final fields without initializers
+//?
+//?
+//?
