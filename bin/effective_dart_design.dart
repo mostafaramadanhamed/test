@@ -171,4 +171,9 @@ class _Favorites {
 //?AVOID public late final fields without initializers
 //?AVOID returning nullable Future, Stream, and collection types
 //?AVOID returning this from methods just to enable a fluent interface
-//?
+//@ Types
+//? DO type annotate variables without initializers.
+//? DO type annotate fields and top-level variables if the type isn't obvious.
+//? DON'T redundantly type annotate initialized local variables.
+//? DO annotate return types on function declarations.
+//? DO annotate parameter types on function declarations.
