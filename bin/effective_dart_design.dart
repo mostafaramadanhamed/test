@@ -177,3 +177,11 @@ class _Favorites {
 //? DON'T redundantly type annotate initialized local variables.
 //? DO annotate return types on function declarations.
 //? DO annotate parameter types on function declarations.
+//? DON'T annotate inferred parameter types on function expressions.
+//? DON'T type annotate initializing formals.
+//? DO write type arguments on generic invocations that aren't inferred.
+//? DON'T write type arguments on generic invocations that are inferred.
+//?AVOID writing incomplete generic types.
+//? DO annotate with dynamic instead of letting inference fail.
+//? PREFER signatures in function type annotations.
+//? DON'T specify a return type for a setter.
