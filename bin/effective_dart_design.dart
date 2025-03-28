@@ -185,3 +185,9 @@ class _Favorites {
 //? DO annotate with dynamic instead of letting inference fail.
 //? PREFER signatures in function type annotations.
 //? DON'T specify a return type for a setter.
+//? DON'T use the legacy typedef syntax.
+PREFER inline function types over typedefs.
+//? PREFER using function type syntax for parameters.
+//? AVOID using dynamic unless you want to disable static checking.
+//?DO use Future<void> as the return type of asynchronous members that do not produce values.
+//? AVOID using FutureOr<T> as a return type.
