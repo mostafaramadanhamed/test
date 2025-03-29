@@ -191,3 +191,8 @@ class _Favorites {
 //? AVOID using dynamic unless you want to disable static checking.
 //?DO use Future<void> as the return type of asynchronous members that do not produce values.
 //? AVOID using FutureOr<T> as a return type.
+
+//@ Parameters
+
+//? AVOID positional boolean parameters.
+//? AVOID optional positional parameters if the user may want to omit earlier parameters.
