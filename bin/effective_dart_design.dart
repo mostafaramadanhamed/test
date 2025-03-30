@@ -196,3 +196,5 @@ class _Favorites {
 
 //? AVOID positional boolean parameters.
 //? AVOID optional positional parameters if the user may want to omit earlier parameters.
+//? AVOID mandatory parameters that accept a special "no argument" value.
+//? DO use inclusive start and exclusive end parameters to accept a range.
