@@ -198,3 +198,8 @@ class _Favorites {
 //? AVOID optional positional parameters if the user may want to omit earlier parameters.
 //? AVOID mandatory parameters that accept a special "no argument" value.
 //? DO use inclusive start and exclusive end parameters to accept a range.
+
+//@ Equality
+
+//? DO override hashCode if you override ==.
+//? DO make your == operator obey the mathematical rules of equality.
