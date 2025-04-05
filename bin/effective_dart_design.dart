@@ -203,3 +203,5 @@ class _Favorites {
 
 //? DO override hashCode if you override ==.
 //? DO make your == operator obey the mathematical rules of equality.
+//? AVOID defining custom equality for mutable classes.
+//? DON'T make the parameter to == nullable.
