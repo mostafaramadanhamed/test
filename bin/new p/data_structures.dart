@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 void main (){
 //** Stack
 var stack=Stack<int>();
@@ -14,8 +16,21 @@ stack.pop();
 stack.pop();
 stack.pop();
 print(stack);
-
-
+// @ Queue
+var queue =Queue<int> ();
+queue.add(1);
+queue.add(2);
+queue.add(3);
+queue.add(4);
+queue.add(5);
+queue.add(6);
+print(queue);
+queue.removeFirst();
+print(queue);
+queue.removeFirst();
+queue.removeFirst();
+queue.removeFirst();
+print(queue);
 }
 //@ Stack
 class Stack<T>{
@@ -50,4 +65,3 @@ class Stack<T>{
   }
 
 }
-// @ Queue
