@@ -1,10 +1,10 @@
-void main(){
-  SortingAlgorithms sortingAlgorithms=SortingAlgorithms();
-  sortingAlgorithms._numbers=[9,6,8,7];
+void main() {
+  SortingAlgorithms sortingAlgorithms = SortingAlgorithms();
+  sortingAlgorithms._numbers = [9, 6, 8, 7];
   sortingAlgorithms.bubbleSort();
-
+  sortingAlgorithms._numbers = [12,8,4,16,9,6];
+  sortingAlgorithms.selectionSort();
 }
-
 class SortingAlgorithms<T>{
   List<int>_numbers=[];
  void bubbleSort() {
@@ -32,4 +32,20 @@ class SortingAlgorithms<T>{
     print(_numbers);
 
  }
+ void selectionSort(){
+   for(int i=0; i<_numbers.length-1;i++){
+     int minIndex=i;
+     for(int j=i+1; j<_numbers.length; j++){
+       if(_numbers[j]<_numbers[minIndex]){
+         minIndex=j;
+       }
+     }
+     int temp=_numbers[minIndex];
+     _numbers[minIndex]=_numbers[i];
+     _numbers[i]=temp;
+     print("$i :$_numbers");
+   }
+   print(_numbers);
+ }
+ void insertionSort(){}
 }
