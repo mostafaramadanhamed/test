@@ -3,7 +3,8 @@ void main(){
   print(safeDivision(5, 20));
   print(safeDivision(20, 0));
   print(safeDivision(0, 20));
-
+  List<String?> words=['mo',null, 'null', 'show'];
+ print(handleNullValueList(words));
 }
 double safeDivision(double numerator, double denominator) {
   try {
@@ -18,4 +19,14 @@ double safeDivision(double numerator, double denominator) {
     print('An unexpected error occurred: $e');
     return double.nan; // Return NaN for unexpected errors
   }
+}
+handleNullValueList(
+    List<String?>words,
+    ){
+  if (words.isEmpty) {
+    return []; // Return empty list if the input itself is null
+  }
+
+  return words.whereType<String>().toList(); // Remove null values
+
 }
