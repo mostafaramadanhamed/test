@@ -15,6 +15,15 @@ void main(){
 
   // Display attendance
   displayAttendance(students, attendance);
+
+  String text = "hello world hello dart world hello";
+
+  Map<String, int> wordCount = countWordFrequency(text);
+
+  print("Word Frequencies:");
+  wordCount.forEach((word, count) {
+    print("$word: $count");
+  });
 }
 
 // Function to add student
@@ -36,4 +45,17 @@ void displayAttendance(Map<int, String> students, Set<int> attendance) {
     String status = attendance.contains(id) ? "Present" : "Absent";
     print("$name (ID: $id): $status");
   });
+}
+
+Map<String, int> countWordFrequency(String text) {
+  // Split by whitespace and remove empty entries
+  List<String> words = text.toLowerCase().split(RegExp(r'\s+'));
+
+  Map<String, int> frequencyMap = {};
+
+  for (var word in words) {
+    frequencyMap[word] = (frequencyMap[word] ?? 0) + 1;
+  }
+
+  return frequencyMap;
 }
