@@ -1,6 +1,10 @@
-void main(){
+void main() {
   print(sum(5));
   print(factorial(5));
+  for (int i = 0; i < 5; i++) {
+    print(fibonacci(i));
+  }
+
 }
 //@ Recursion
 int sum(int number){
@@ -13,3 +17,10 @@ int factorial(int number){
   return number*factorial(number-1);
 }
 //@ Recursion - Fibonacci
+int fibonacci(int number){
+  if(number==0)return 0;
+  if(number==1 || number==2) return 1;
+  else{
+    return fibonacci(number-1) + fibonacci(number-2);
+  }
+}
