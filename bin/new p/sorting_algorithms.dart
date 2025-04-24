@@ -1,11 +1,18 @@
 void main() {
   SortingAlgorithms sortingAlgorithms = SortingAlgorithms();
   sortingAlgorithms._numbers = [9, 6, 8, 7];
+  print('Bubble Sort');
   sortingAlgorithms.bubbleSort();
   sortingAlgorithms._numbers = [12, 8, 4, 16, 9, 6];
+  print('Selection Sort');
   sortingAlgorithms.selectionSort();
   sortingAlgorithms._numbers = [20, 10, 30, 25, 28];
+  print('Insertion Sort');
   sortingAlgorithms.insertionSort();
+  sortingAlgorithms._numbers=[67,9,4,52,1];
+  print('Merge Sort');
+  sortingAlgorithms.mergeSort(sortingAlgorithms._numbers);
+  print(sortingAlgorithms._numbers);
 }
 
 class SortingAlgorithms<T> {
@@ -22,7 +29,7 @@ class SortingAlgorithms<T> {
             _numbers[j] = _numbers[j + 1];
             _numbers[j + 1] = temp;
             isSorted = true;
-            print('Bubble Sort $i:  $_numbers');
+
           }
         }
         if (!isSorted) {
@@ -44,7 +51,7 @@ class SortingAlgorithms<T> {
       int temp = _numbers[minIndex];
       _numbers[minIndex] = _numbers[i];
       _numbers[i] = temp;
-      print("Selection Sort $i :$_numbers");
+
     }
     print(_numbers);
   }
@@ -58,8 +65,43 @@ class SortingAlgorithms<T> {
         j = j - 1;
       }
       _numbers[j + 1] = key;
-      print('Insertion Sort $i : $_numbers');
+
     }
     print(_numbers);
   }
+  //@ Merge Sort
+  void mergeSort(List<int> list) {
+    if (list.length <= 1) return;
+
+    int mid = list.length ~/ 2;
+    List<int> left = list.sublist(0, mid);
+    List<int> right = list.sublist(mid);
+
+    mergeSort(left);
+    mergeSort(right);
+
+    _merge(list, left, right);
+  }
+
+  void _merge(List<int> list, List<int> left, List<int> right) {
+    int i = 0, j = 0, k = 0;
+
+    while (i < left.length && j < right.length) {
+      if (left[i] <= right[j]) {
+        list[k++] = left[i++];
+      } else {
+        list[k++] = right[j++];
+      }
+    }
+
+    while (i < left.length) {
+      list[k++] = left[i++];
+    }
+
+    while (j < right.length) {
+      list[k++] = right[j++];
+    }
+  }
+
 }
+
