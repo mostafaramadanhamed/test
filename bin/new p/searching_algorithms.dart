@@ -13,3 +13,26 @@ for (int i = 0; i < numbers.length; i++) {
 }
 return -1;
 }
+//@ Binary Search
+int binarySearch(List<int>numbers, int target){
+  int low=0;
+  int high=numbers.length-1;
+  while (low <= high) {
+    int mid = (low + (high - low) / 2).toInt() ;
+
+    // Check if x is present at mid
+    if (numbers[mid] == target) {
+      return mid;
+    }
+
+    // If x greater, ignore left half
+    if (numbers[mid] < target) {
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    }
+  }
+
+  // If we reach here, then element was not present
+  return -1;
+}
